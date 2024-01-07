@@ -22,7 +22,7 @@ public enum TileType
     //CAPSULE = 36,
     PIECE_TRACKER_HORIZONTAL =40,
     PIECE_TRACKER_VERTICAL = 41,
-    LAUNCH_PAD =50,
+    PORTAL =50,
     PIECE=60,
 }
 
@@ -38,16 +38,16 @@ public enum GearType
 {
     NONE,
     DUNE_BLASTER = 10,
-    JET_PACK = 20,
+    TELEPORTER = 20,
     BOTTLE_OF_WATER = 30,
-    SUNSCREEN = 40,
+    SOLAR_SHIELD = 40,
     TERRASCOPE = 50,
     CAPSULE = 60,
 }
 
 public enum CardType
 {
-    SCORCHING=10,
+    SUNBURN=10,
     STORM_REACHING=20,
     TORNADO_MOVING=30,
 }

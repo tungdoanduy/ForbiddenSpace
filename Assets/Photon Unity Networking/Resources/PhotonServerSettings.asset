@@ -37,4 +37,8 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupItems
   - RequestForPickupTimes
+  - SetUp
+  - GenerateMap
+  - MoveTornado
+  - ClearSand
   DisableAutoOpenWizard: 1
