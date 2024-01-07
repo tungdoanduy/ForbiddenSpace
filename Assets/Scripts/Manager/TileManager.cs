@@ -7,7 +7,6 @@ public class TileManager : MonoBehaviour
 {
     public static TileManager Instance {  get; private set; }
 
-    [SerializeField] int extraLowerTiles;
     [SerializeField] float tileDistance;
     public float TileDistance => tileDistance;
     [SerializeField] float tileHeight;
@@ -39,38 +38,24 @@ public class TileManager : MonoBehaviour
         Instance = this;
     }
 
-    [Button]
-    void CreateLowerLayer()
-    {
-        //clear tiles
-        tiles.Clear();
-        while (tileContainer.childCount > 0)
-        {
-            DestroyImmediate(tileContainer.GetChild(0).gameObject);
-        }
-        //create tiles
-        List<Vector2Int> slots = new List<Vector2Int>();
-        for (int i = -extraLowerTiles; i < row + extraLowerTiles; i++)
-        {
-            List<Tile> rowTiles = new List<Tile>();
-            for (int j = -extraLowerTiles; j < col + extraLowerTiles; j++)
-            {
-                GameObject clone = new GameObject("Tile");
-                clone.transform.parent = tileContainer;
-                clone.AddComponent<Tile>();
-                clone.transform.position = new Vector3(i * tileDistance, 0, j * tileDistance);
-                rowTiles.Add(clone.GetComponent<Tile>());
-                slots.Add(new Vector2Int(i, j));
-            }
-            tiles.Add(rowTiles);
-        }
-
-        for (int i = 0; i < slots.Count; i++)
-        {
-            tiles[slots[i].x][slots[i].y].SetUp(TileType.NONE, 1);
-            tiles[slots[i].x][slots[i].y].CreateSand(1);
-        }
-    }
+    //[Button]
+    //void CreateLowerLayer()
+    //{
+    //    //clear tiles
+    //    tiles.Clear();
+    //    while (lowerTileContainer.childCount > 0)
+    //    {
+    //        DestroyImmediate(lowerTileContainer.GetChild(0).gameObject);
+    //    }
+    //    //create tiles
+    //    for (int i = -extraLowerTiles; i < row + extraLowerTiles; i++)
+    //    {
+    //        for (int j = -extraLowerTiles; j < col + extraLowerTiles; j++)
+    //        {
+    //            GameObject sand = Instantiate(sandTemplate, new Vector3(i * tileDistance, 0, j * tileDistance), Quaternion.identity,lowerTileContainer);
+    //        }
+    //    }
+    //}
     [PunRPC]
     public void GenerateMap()
     {
@@ -130,7 +115,7 @@ public class TileManager : MonoBehaviour
         {
             Vector2Int pos = slots[Random.Range(0, slots.Count)];
             slots.Remove(pos);
-            tiles[pos.x][pos.y].SetUp(TileType.OASIS, Random.Range(1, 3));
+            tiles[pos.x][pos.y].SetUp(TileType.WELL, Random.Range(1, 3));
             tiles[pos.x][pos.y].CreateOasis();
         }
         //set up tunnel

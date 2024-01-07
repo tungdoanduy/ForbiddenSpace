@@ -12,7 +12,7 @@ public enum TileType
 {
     NONE,
     TUNNEL = 10,
-    OASIS= 20,
+    WELL= 20,
     GEAR=30,
     //DUNE_BLASTER = 31,
     //JET_PACK = 32,

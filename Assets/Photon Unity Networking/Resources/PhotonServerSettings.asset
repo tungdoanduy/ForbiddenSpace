@@ -41,4 +41,5 @@ MonoBehaviour:
   - GenerateMap
   - MoveTornado
   - ClearSand
+  - CreateTornado
   DisableAutoOpenWizard: 1
