@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GearDict GearDict;
     public BookDict BookDict;
     [SerializeField] List<Player> players = new List<Player>();
+    int playerSeqNum = -1;
     public List<Player> Players => players;
 
     int bookLeft = 4;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
     [PunRPC]
     void SetUp()
     {
+        playerSeqNum = PhotonNetwork.room.PlayerCount - 1;
 
     }
 }
